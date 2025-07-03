@@ -1,32 +1,32 @@
 # Is a relationship 
- - It is also known as an inheritance
- - The main advantage of Is-A-Relationship is code reusability.
- - By using extends keyword we can implement Is-A-Relationship
+- It is also known as an inheritance
+- The main advantage of Is-A-Relationship is code reusability.
+- By using extends keyword we can implement Is-A-Relationship
 
 
-    class P{
-        void m1(){
-            System.out.println("P class m1 method");
+        class P{
+            void m1(){
+                System.out.println("P class m1 method");
+            }
         }
-    }
-    class C extends P{
-        void m2(){
-        System.out.println("C class m2 method");
+        class C extends P{
+            void m2(){
+            System.out.println("C class m2 method");
+            }
         }
-    }
-    public class IsARelationship {
-        public static void main(String[] args) {
-            C c = new C();
-            c.m1(); c.m2();
-            
-            P p = new P();
-            p.m1();
-            
-            P p1 = new C();
-            p1.m1();
-            //p1.m2();
+        public class IsARelationship {
+            public static void main(String[] args) {
+                C c = new C();
+                c.m1(); c.m2();
+                
+                P p = new P();
+                p.m1();
+                
+                P p1 = new C();
+                p1.m1();
+                //p1.m2();
+            }
         }
-    }
 
 
 1. Whatever method parent has by default available to the child and hence child reference can call both parent and child class method. 
@@ -44,8 +44,8 @@ Class cannot support multiple classes.
 # Why Java won't provide support for multiple inheritance?
 - There may be a change of **ambiguity problem**. Hence, Java won't provide support for multiple inheritance.
 - But interface can extend any number of interface simultaneously hence, Java provide support for multiple inheritance with respect to interfaces.
-- interfaceA.super.method1()
-- interfaceB.super.method2()
+  - interfaceA.super.method1()
+  - interfaceB.super.method2()
 
 
 # why ambiguity problem won't be their in interface?
@@ -74,14 +74,14 @@ Class cannot support multiple classes.
 - With in a class two method with same signature not allow
 
     
-    class Test{
-        public static void m1(int i) {
-            
-        }
-        public static void m1(int a){
-            
-        }
-    }
+      class Test{
+          public static void m1(int i) {
+              
+          }
+          public static void m1(int a){
+              
+          }
+      }
 
 - Compile time error **m1(int)** is already define in Test
 
@@ -275,11 +275,101 @@ Both are int literals → so Java tries to match m1(int, int)
                 System.out.println("Child Education ...");
               }
           }
+          
+          
+          ParentClas parentClas = new ParentClas();
+          parentClas.property();
+          
+          ChildClas childClas = new ChildClas();
+          childClas.property();
+          
+          ParentClas parentClas1 = new ChildClas();
+          parentClas1.property();
+
+- O/P
+  - Parent property
+  - Child Property increased
+  - Child Property increased
 
 
+- In overriding method resolution always takes care by **JVM based on run time object** and hence overriding is also consider as **RunTime Polymorphism or Dynamic Polymorphism or Late Binding**.
+ ### VVVI  Role of JVM and Compiler
+ParentClas parentClas1 = new ChildClas();
+parentClas1.property();
+
+- Parent Reference can be hold child object but by using that reference we can call only the method which are present in Parent class. Child specific methods we can't call.
+- But here **compiler and JVM role comes**.
+- Here parentClas1 is reference of ParentClas type so compiler will check in ParentClas **property() method** is available or not if it is available than compile.
+- But at the runtime JVM will check new ChildClas(); is it parent object if it is ParentClas object than no problem.
+- But here it is ChildClas object So JVM will go and check is **property() method** overriding(ParentClas) in child class or not.
+- If it is not overridden than Parent method will execute but if it is overriding in the child classes than at **runtime object JVM** will execute **child method**. 
 
 
+## Rules of overriding
+1. Method signature must be same
+2. In overriding return type must be same but this rule is applicable until 1.4 version only from 1.5 version onwards we can take **co-variant return type**.
+   - co-variant return type means if Parent class method return type is object than in child class overriding method return type must be either object type of child class of object type.
+   - Parent class method return type is object child class method return type should  object, string, Number, Integer, StringBuffer...
+   - If Parent class method return type is Number child class method return type should  Number, Integer
 
+3. co-variant return type concept applicable only for object types not for primitive types.
+4. Parent class private method not applicable to the child and hence overriding not applicable for **private method**.
+5. Based on our requirement we can define exactly same private methods in child class it is valid but not overriding.
+6. We can't override parent class final method in child classes if we are try to override we will get C.T.E.
+7. Parent class abstract method we should override in child class to provide implementation.
+8. We can override non-abstract method as abstract. The **_main advantage_** of this approach is we can stop this availability of parent method implementation to the next level child class.
+
+                 class P {
+                   public void m1(){}
+                 }
+                 abstract class C extends P{
+                   public abstract void m1();
+                 }
+                 class SubChild extends C{
+                   public void m1(){}
+                 }
+
+             Parent class method      final           non-final     abstract            synchronized
+                                       |                 |           | ^                   | ^
+                                       V                 V           V |                   V |
+             child class method     final, non-final     final      non-abstract          non-synchronized
+
+9. While overriding we can't reduce scope of access modifier, but we can increase the scope.
+
+
+        class P{
+          public void m1(){
+            System.out.println("Parent");
+          }
+        }
+        class C extends P{
+          void m1(){
+            System.out.println("Child");
+          }
+        }
+        C.T.E. -> m1() in C can't override m1() in P attempting to assign weaker access privileges ('package-private'); was 'public'
+
+
+        Parent class method         public          protected                  default                      private
+                                      
+        child class method          public          protected, public       default, protected, public      private method overriding concept can't be applicable for private method
+
+
+* If Child class method throws any **checked exception** compulsory Parent class method should throw same checked exception otherwise we will get compile time exception.
+* But there are no restriction for **unchecked exception**. 
+
+        import java.io.*;
+        class P{
+            public void m1() throws IOException{
+        
+            }
+        }
+        class C extends P{
+            public void m1() throws EOFException, InterruptedException{
+        
+            }
+        }
+- m1() in C can't override m1() in P; Overridden method doesn't throw java.lang.InterruptedException.
 
 
 
