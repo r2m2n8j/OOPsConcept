@@ -19,8 +19,36 @@ public class OverridingConcept {
         parentClas1.property();
 //        parentClas1.marry();
 //        parentClas1.education();
+
+        ParentStatic parentStatic = new ChildStatic();
+        parentStatic.m1();
+        System.out.println(parentStatic.x);
+
+        ChildStatic childStatic= new ChildStatic();
+        childStatic.m1();
+        System.out.println(childStatic.x);
+
+
+
     }
 }
+
+class ParentStatic{
+    static int x = 100;
+    public static void m1(){
+        System.out.println("Parent static method");
+    }
+}
+
+class ChildStatic extends ParentStatic{
+    static int x = 200;
+    public static void m1(){
+        System.out.println("Child static method");
+    }
+}
+
+
+
 
 class ParentClas{
     public void property(){

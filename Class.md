@@ -373,4 +373,66 @@ parentClas1.property();
 
 
 
+### Overriding w.r.t static method
+-We can't override a static method as non-static otherwise we will get compile time error.
+- If Both Parent and child class methods are static than we won't get any compile time error it seems overriding concept applicable for static method, but it is _not overriding_. **It is method hiding**.
+
+
+              class Parent{
+                  public static void m1(){
+                      System.out.println("Parent static method");
+                  }
+              }
+            
+              class Child extends Parent{
+                  public static void m1(){
+                      System.out.println("Child static method");
+                  }
+              }
+            Parent p = new Child();
+            p.m1();
+- o/p
+  - Parent static method
+- Even though the object is of type Child, the reference is of type Parent, and static method calls are resolved by reference type, not object type.
+
+This is different from instance methods, which use dynamic dispatch (runtime polymorphism).
+
+
+
+
+# Overriding with respect to variable
+
+        class A {
+            static int x = 5;
+            int y = 10;
+        }
+        
+        class B extends A {
+            static int x = 15;
+            int y = 20;
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                A a = new B();
+                System.out.println(a.x);  // Output: 5
+                System.out.println(a.y);  // Output: 10
+            }
+        }
+
+- Even though a is pointing to a Child object, a.x accesses Parent's x.
+
+- That's because variable access is resolved at **compile time** using **reference type**, not runtime object type.
+
+
+# Object type casting
+
+# Static control flow
+
+# Instance control flow
+
+
+
+
+
 
