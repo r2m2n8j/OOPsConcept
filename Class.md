@@ -88,12 +88,12 @@ Class cannot support multiple classes.
 
 
 
-## Overloading
+# Overloading
 
 - Two methods are said to be overloaded if and only if both methods having same name but **different argument types**.
-- In overloading method resolution always take care by compiler based on reference type hence, overloading is also known as **Compile time Polymorphism, Static Polymorphism, and Early binding Polymorphism**.
+- In overloading method resolution always take care by compiler based on reference type **Parent p = new Child()** parent type hence, overloading is also known as **Compile time Polymorphism, Static Polymorphism, and Early binding Polymorphism**.
 
-# Case 1  Automatic Promotion in Overloading
+## Case 1  Automatic Promotion in Overloading
 - While resolving overloaded methods if existing matched method is not available that we won't get any compile time error immediately.
 - First it will promote argument to the next level and check whether matched method is available or not.
 - If matched method is available than it will be considered and if matched method is not available than compiler promote argument once again to the next level.
@@ -104,51 +104,52 @@ Class cannot support multiple classes.
 - **char->int->long->float->double**
 
 
-    package com.org.oops;
-
-    public class Overloading {
-        public void m1(){
-            System.out.println("No args");
-        }
-        public void m1(int i){
-            System.out.println("Int args");
-        }
-        public void m1(float f){
-            System.out.println("Float args");
-        }
-        public void m1(double d){
-            System.out.println("Double args");
-        }
     
-        public static void main(String[] args) {
-            Overloading overloading = new Overloading();
-            overloading.m1();
-            overloading.m1(11);
-            overloading.m1(10.5f);
-            overloading.m1(10.4);
-        }
-    }
 
-# Case 2 
+        package com.org.oops;
+        public class Overloading {
+            public void m1(){
+                System.out.println("No args");
+            }
+            public void m1(int i){
+                System.out.println("Int args");
+            }
+            public void m1(float f){
+                System.out.println("Float args");
+            }
+            public void m1(double d){
+                System.out.println("Double args");
+            }
+            public static void main(String[] args) {
+                Overloading overloading = new Overloading();
+                overloading.m1();
+                overloading.m1(11);
+                overloading.m1(10.5f);
+                overloading.m1(10.4);
+            }
+        }
+
+## Case 2 
 - While resolving overloaded method compiler will always give precedence of child type argument than compared with parent type argument.
 
-    
-    class Case2{
-        public void m1(String s){
-            System.out.println("String version");
+
+
+        class Case2{
+            public void m1(String s){
+                System.out.println("String version");
+            }
+            public void m1(Object o){
+                System.out.println("Object version");
+            }
         }
-        public void m1(Object o){
-            System.out.println("Object version");
-        }
-    }
 
-o/p
-String version
-Object version
-String version
+- o/p
+  - String version
+  - Object version
+  - String version
 
 
-# Case 3 ambiguous method call
+## Case 3 ambiguous method call
 
     class Case2{
         public void m1(String s){
@@ -173,14 +174,14 @@ String version
 - we can explicitly cast null to guide Java:
 
     
-    case2.m1((String) null);        
-    case2.m1((StringBuffer) null);  
+        case2.m1((String) null);        
+        case2.m1((StringBuffer) null);  
 
 - ✅ Output: String version
 - ✅ Output: String Buffer
 
 
-# Case 4 
+## Case 4 
 
 
 
@@ -204,7 +205,7 @@ Both are int literals → so Java tries to match m1(int, int)
 
 ❌ No such method exists!
 
-- Can Java promote one of the ints to float?
+- Can Java promote one of the int to float?
     - Yes. Widening from int → float is allowed.
     - But now two candidates match:
 
@@ -215,7 +216,7 @@ Both are int literals → so Java tries to match m1(int, int)
 -  Result: ❌ Compile-Time Error — ambiguous method call
 
 
-# Case 5 
+## Case 5 
 
         class Animal{}
         class Monkey extends Animal{}
@@ -250,10 +251,30 @@ Both are int literals → so Java tries to match m1(int, int)
 
 
 
-## Overriding 
+# Overriding 
+
+- What ever methods Parent has by default available to the child through inheritance.
+- If child class not satisfied with parent class implementation than child is allowed to redefine that method based on its requirement is called overriding.
 
 
-
+  
+          class ParentClas{
+              public void property(){
+                  System.out.println("Parent property");
+              }
+              public void marry(){
+                  System.out.println("Parent arrange ...");
+              }
+          }
+              
+          class ChildClas extends ParentClas{
+              public void property(){
+                System.out.println("Child Property increased");
+              }
+              public void education(){
+                System.out.println("Child Education ...");
+              }
+          }
 
 
 
