@@ -1,3 +1,49 @@
+
+# Abstraction
+- Hiding internal implementation and just highlight the set of services What we are offering is the concept of **Abstraction**.
+- We are writing code and using int value in decimal without knowing that How computer store int value in 32bit form.
+- The main advantage of 
+    1. Achieve security because we are not highlighting our internal implementation.
+  2. Without effecting outside person we can perform any type of system update. Enhancement will become easy.
+  3. It improves maintainability of the application.
+  4. It improves easiness to use system.
+
+# Encapsulation
+- Is the concept of binding data and methods and preventing it from unauthorized access.
+- It wraps up data and functions under single unit.
+- Encapsulation can be achieved by declaring all the variables in the class as private and writing public methods in the class  to set and get the values of variables.
+- **Main feature** : Data hiding, Providing access control and modularity
+- Modularity is the principle of breaking down complex system into smaller independent  and coherent units.
+- The main advantages
+    1. Safety
+  2. We can achieve security
+  3. Enhance will become easy
+  4. It improves maintainability of the application.
+- **Disadvantage** It increase length of the code and slow shutdown evaluation.
+
+# Inheritance 
+- Inheritance in Java is mechanism in which one object acquires all the properties and behaviours of a parent object.
+- The idea behind inheritance in Java is that you can create new classes that are built upon existing classes.
+
+
+# Polymorphism
+- one name but multiple form is the concept of Polymorphism.
+1. Use of parent reference to hold child object is a concept of Polymorphism.
+    * List<Integer> list = new ArrayList<>();
+    * Parent class reference can be used to hold child class object but using that reference we can call parent class method only.
+   * **When we should go for parent reference to hold child object**?
+   * If we don't know exact runtime type of object than we should go for Parent reference.
+2. Example 
+   * Method name is same, but we can apply for different types of arguments (**Overloading**)
+   * abs(int)
+   * abs(long)
+   * abs(float)
+3. Example
+    * Method signature is same but in parent class one type of implementation and in the child class another type of implementation (**Overriding**)
+
+
+
+
 # Is a relationship 
 - It is also known as an inheritance
 - The main advantage of Is-A-Relationship is code reusability.
@@ -420,7 +466,7 @@ This is different from instance methods, which use dynamic dispatch (runtime pol
             }
         }
 
-- Even though a is pointing to a Child object, a.x accesses Parent's x.
+- Even though "a" is pointing to a Child object, a.x accesses Parent's x.
 
 - That's because variable access is resolved at **compile time** using **reference type**, not runtime object type.
 

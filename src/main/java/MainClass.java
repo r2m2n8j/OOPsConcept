@@ -30,3 +30,6 @@ public class MainClass {
 interface CustomFunctionalInterface{
     String sum1(int a, int b);
 }
+
+
+

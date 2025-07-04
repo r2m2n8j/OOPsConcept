@@ -161,3 +161,10 @@ If two interfaces declare static methods with the same name, there’s no confli
         }
     }
 ✅ The private method improves internal code reuse without exposing it to implementing classes.
+
+
+
+
+
+
+
