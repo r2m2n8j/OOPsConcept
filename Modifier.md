@@ -1,6 +1,6 @@
 # Class Level Modifier
 - When ever we are writing our own java class compulsory we have  to provide some information about our class to the **JVM**.
-- Whether our class can be accessible from anywhere or not, Whether chld class creation is possible for our class or not.
+- Whether our class can be accessible from anywhere or not, Whether child class creation is possible for our class or not.
 - For top level class
     * public
     * default

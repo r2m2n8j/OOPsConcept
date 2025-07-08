@@ -1,5 +1,27 @@
 # Interface concept
 
+## What is the difference between interface and abstract class
+- Abstract classes and interfaces both support abstraction. 
+- But they differ in their purpose and implementation. 
+- Abstract classes can have both **abstract** (unimplemented) and **concrete** (implemented) methods.
+- While interfaces can only **declare methods (no implementation)**.
+- Interfaces primarily define **contracts** for what a class should do.
+- While abstract classes can also provide some implementation details.
+
+## Abstract Class:
+- **Can have both abstract and concrete methods**: This allows abstract classes to provide a partial implementation and share common behavior among subclasses.
+- **Can have instance variables (fields)**: Abstract classes can maintain state through member variables.
+- **Inheritance**: A class can inherit from only one abstract class (single inheritance).
+- **Used for**: Modeling a "kind of" relationship, where subclasses share common characteristics and behavior.
+
+## Interface:
+- Can only have abstract methods (**in older versions of Java, now can have default and static methods with implementations**):Interfaces focus on defining a set of behaviors that classes must implement.
+- **Cannot have instance variables**: Interfaces define contracts, not state.
+- **Multiple Inheritance**: A class can implement multiple interfaces (multiple inheritance of behavior).
+- **Used for**: Defining a contract or API that unrelated classes can implement to achieve polymorphism.
+
+
+
 # 🔹 1. Default Method Conflict (Diamond Problem)
 🔸 Scenario:
 Two interfaces define the same default method, and a class implements both.
