@@ -5,28 +5,28 @@ import java.io.IOException;
 
 public class OverridingConcept {
     public static void main(String[] args) {
-        ParentClas parentClas = new ParentClas();
-//        parentClas.marry();
-        parentClas.property();
+//        ParentClas parentClas = new ParentClas();
+////        parentClas.marry();
+//        parentClas.property();
 
 
-        ChildClas childClas = new ChildClas();
-        childClas.property();
-//        childClas.marry();
-//        childClas.education();
-
+//        ChildClas childClas = new ChildClas();
+//        childClas.property();
+////        childClas.marry();
+////        childClas.education();
+//
         ParentClas parentClas1 = new ChildClas();
         parentClas1.property();
 //        parentClas1.marry();
 //        parentClas1.education();
 
-        ParentStatic parentStatic = new ChildStatic();
-        parentStatic.m1();
-        System.out.println(parentStatic.x);
-
-        ChildStatic childStatic= new ChildStatic();
-        childStatic.m1();
-        System.out.println(childStatic.x);
+//        ParentStatic parentStatic = new ChildStatic();
+//        parentStatic.m1();
+//        System.out.println(parentStatic.x);
+//
+//        ChildStatic childStatic= new ChildStatic();
+//        childStatic.m1();
+//        System.out.println(childStatic.x);
 
 
 

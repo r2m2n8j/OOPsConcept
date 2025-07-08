@@ -55,6 +55,7 @@ class Case2{
     public void m1(StringBuffer sb){
         System.out.println("String Buffer");
     }
+
 }
 
 class Case4{

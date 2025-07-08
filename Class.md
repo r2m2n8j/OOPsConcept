@@ -187,6 +187,10 @@ Class cannot support multiple classes.
             public void m1(Object o){
                 System.out.println("Object version");
             }
+            Case2 case2 = new Case2();
+            case2.m1("Ramanuj");
+            case2.m1(new Object());
+            case2.m1(null);
         }
 
 - o/p
@@ -339,13 +343,16 @@ Both are int literals → so Java tries to match m1(int, int)
 
 
 - In overriding method resolution always takes care by **JVM based on run time object** and hence overriding is also consider as **RunTime Polymorphism or Dynamic Polymorphism or Late Binding**.
- ### VVVI  Role of JVM and Compiler
-ParentClas parentClas1 = new ChildClas();
-parentClas1.property();
+### VVVI  Role of JVM and Compiler
+
+        ParentClas parentClas1 = new ChildClas();
+        parentClas1.property();
 
 - Parent Reference can be hold child object but by using that reference we can call only the method which are present in Parent class. Child specific methods we can't call.
 - But here **compiler and JVM role comes**.
-- Here parentClas1 is reference of ParentClas type so compiler will check in ParentClas **property() method** is available or not if it is available than compile.
+- Here parentClas1 is reference of ParentClas type so compiler will check in ParentClas **property() method** is available or not .
+- If it is not available it gives compile time error **Cannot resolve method 'property' in 'ParentClas'**.
+- if it is available than compile.
 - But at the runtime JVM will check new ChildClas(); is it parent object if it is ParentClas object than no problem.
 - But here it is ChildClas object So JVM will go and check is **property() method** overriding(ParentClas) in child class or not.
 - If it is not overridden than Parent method will execute but if it is overriding in the child classes than at **runtime object JVM** will execute **child method**. 
